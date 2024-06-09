@@ -1,0 +1,227 @@
+:root {
+    --clr-violet: hsl(263, 55%, 52%);
+    --clr-darkgrayblue: 217, 19%, 35%;
+    --clr-darkblackblue: hsl(219, 29%, 14%);
+    --clr-white: 0, 0%, 100%;
+    --clr-background: hsl(210, 46%, 95%);
+    
+    --clr-lightgray: hsl(0, 0%, 81%);
+
+    --ff-primary: "Barlow Semi Condensed", sans-serif;
+    
+    --fw-regular: 500;
+    --fw-semibold: 600;
+}
+
+/* CSS Reset */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* General Styles */
+
+body {
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-regular);
+    font-size: .825rem;
+    /* padding: 1.5rem; */
+    background: var(--clr-background);
+
+    display: grid;
+    place-content: center;
+}
+
+.avatar {
+    border: 2px solid var(--avatar-border-color);
+    border-radius: 100rem;
+    aspect-ratio: 1;
+    height: 35px;
+    width: 35px;
+}
+
+/* Utility Classes */
+.flex {
+    display: flex;
+    gap: 1rem;
+}
+
+.flow > * + * {
+    margin-top: 1em;
+}
+
+/* Testimonials */
+.testimonial-grid {
+    --gap: 1.5rem;
+    display: grid;
+    gap: var(--gap);
+    grid-auto-columns: 1fr;
+    grid-template-areas: 
+    'one'
+    'two'
+    'three'
+    'four'
+    'five';
+    width: min(90%, 70rem);
+    padding-block: 2rem;
+    margin-inline: auto;
+}
+
+@media screen and (min-width: 33em) {
+    .testimonial-grid {
+        grid-template-areas: 
+        'one one'
+        'two three'
+        'four four'
+        'five five';
+    }
+}
+
+@media screen and (min-width: 38em) {
+    .testimonial-grid {
+        grid-template-areas: 
+        'one one'
+        'two five'
+        'three five'
+        'four four';
+    }
+}
+
+@media screen and (min-width: 54em) {
+    .testimonial-grid {
+        grid-template-areas: 
+        'one one two'
+        'five five five'
+        'three four four';
+    }
+}
+
+@media screen and (min-width: 75em) {
+    .testimonial-grid {
+        grid-template-areas: 
+        'one one two five'
+        'three four four five';
+    }
+}
+
+.testimonial {
+    --avatar-border-color: var(--clr-lightgray);
+    --text-color: hsl(var(--clr-darkgrayblue));
+    --position-color: hsla(var(--clr-darkgrayblue), .5);
+    --quote-color: hsla(var(--clr-darkgrayblue), .70);
+    background: hsl(var(--clr-white));
+    padding: 1.5rem;
+    border-radius: .5rem;
+    color: var(--text-color);
+    box-shadow: 2.5rem 3.75rem 3rem -3rem hsla(var(--clr-darkgrayblue), .25);
+}
+
+.testimonial:nth-child(1) {
+    grid-area: one;
+}
+
+.testimonial:nth-child(2) {
+    grid-area: two;
+}
+
+.testimonial:nth-child(3) {
+    grid-area: three;
+}
+
+.testimonial:nth-child(4) {
+    grid-area: four;
+}
+
+.testimonial:nth-child(5) {
+    grid-area: five;
+}
+
+.name {
+    font-size: .875rem;
+    font-weight: var(--fw-semibold);
+}
+
+.position {
+    font-size: .75rem;
+    color: var(--position-color);
+}
+
+.quote {
+    color: var(--quote-color);
+}
+
+.headline {
+    font-size: 1.25rem;
+    font-weight: var(--fw-semibold);
+    line-height: 1.2;
+    text-wrap: pretty;
+}
+
+.testimonial[data-alt="true"] {
+    --text-color: hsl(var(--clr-white));
+    --position-color: hsla(var(--clr-white), .5);
+    --quote-color: hsla(var(--clr-white), .70);
+}
+
+.testimonial[data-background="violet"] {
+    --avatar-border-color: hsl(264, 83%, 70%);
+    background-color: var(--clr-violet);
+    background-image: url(./images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1.5rem) top;
+
+}
+
+.testimonial[data-background="grayblue"] {
+    background: hsl(var(--clr-darkgrayblue));
+}
+
+.testimonial[data-background="blackblue"] {
+    --avatar-border-color: var(--clr-violet);
+    background: var(--clr-darkblackblue);
+}
