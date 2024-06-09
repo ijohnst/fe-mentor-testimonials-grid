@@ -39,11 +39,10 @@ Users should be able to:
 - CSS custom properties
 - CSS Grid
 - Mobile-first workflow
-- Tables
 
 ### What I learned
 
-It took longer than anticipated to get the different screen sizes right
+CSS Grid
 
 ## Author
 
